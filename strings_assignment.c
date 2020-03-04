@@ -5,7 +5,7 @@
 
 size_t strlen(const char* s) {
     size_t count = 0;
-    for (int i = 0; *(s+i) != '\n'; ++i) { ++count; }
+    for (int i = 0; *(s+i) != '\0'; ++i) { ++count; }
     
     return count;
 }
@@ -59,6 +59,7 @@ char* strstr(const char* s, const char* t) {
     for (int e = 0; e < strlen(s); ++e) {
         for(int i = 0; i < strlen(t); ++i) {
             if (*(s + e) == *(t + i)) { ++count; }
+	    else { count = 0; break; }
             if (count == strlen(t)) { return (s + e - count); }
         }
     }
